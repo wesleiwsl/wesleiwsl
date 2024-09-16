@@ -1,4 +1,4 @@
-Temperaturas:
+Temperaturas: "TESTE"
 coretemp-isa-0000
 Adapter: ISA adapter
 Package id 0:  +35.0°C  (high = +100.0°C, crit = +100.0°C)
@@ -70,3 +70,4 @@ MiB Swap:   3795,0 total,   3795,0 free,      0,0 used.   2732,1 avail Mem
  263044 weslei    20   0   11932   5504   3456 R  16,7   0,1   0:00.02 top
    1574 mysql     20   0 2376992 394540  36096 S   8,3  10,2  10:36.04 mysqld
       1 root      20   0   23360  14184   9320 S   0,0   0,4   0:12.91 systemd
+
