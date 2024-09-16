@@ -1,0 +1,4 @@
+iniciando navegador
+html pagina
+fechando navegador
+Dados exportados para chibatao.csv
