@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Bem-vindo ao Ajuda Motorista</h1>
+        <p class="text-center">Selecione uma das opções abaixo para realizar a consulta:</p>
+
+        <div class="d-flex justify-content-center mt-4">
+            <a href="cep.html" class="btn btn-primary btn-lg mx-3">CEP</a>
+            <a href="cnpj.html" class="btn btn-secondary btn-lg mx-3">CNPJ</a>
+            <a href="detran.html" class="btn btn-info btn-lg mx-3">DETRANs</a>
+        </div>
+
+        <div class="mt-5 text-center">
+            <h2>Caminhoneiros</h2>
+            <div class="d-grid gap-3 mx-auto" style="max-width: 400px;">
+                <a href="https://cronotacografo.rbmlq.gov.br/certificados/consultar" target="_blank" class="btn btn-success">CRONOTACOGRAFO</a>
+                <a href="https://consultapublica.antt.gov.br/Site/ConsultaRNTRC.aspx" target="_blank" class="btn btn-success">RNTRC/ANTTT</a> <br><br>
+                <a href="https://www.in.gov.br/consulta/-/buscar/dou?q=ddm__text__21040__texto_pt_BR-%22+TABELA+B+-+OPERA%C3%87%C3%95ES+EM+QUE+HAJA+A+CONTRATA%C3%87%C3%83O+APENAS+DO+VE%C3%8DCULO+AUTOMOTOR+DE+CARGAS%22&s=todos&exactDate=all&sortType=0" target="_blank" class="btn btn-success">PISO MINIMO DE FRETE</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para obter a localização do dispositivo
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    // Aqui você pode usar lat e lon para outras finalidades
+                }, showError);
+            } else {
+                console.log('Geolocalização não é suportada neste navegador.');
+            }
+        }
+
+        // Função para exibir erros
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log("Usuário negou a solicitação de geolocalização.");
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log("A localização não está disponível.");
+                    break;
+                case error.TIMEOUT:
+                    console.log("A solicitação para obter a localização do usuário expirou.");
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log("Um erro desconhecido ocorreu.");
+                    break;
+            }
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = getLocation;
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

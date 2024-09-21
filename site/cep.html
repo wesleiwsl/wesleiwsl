@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar CEP</title>
+    <!-- Link para a CDN do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="container mt-5">
+    <h1 class="text-center">CONSULTAR CEP</h1>
+    
+    <form id="cepForm" class="row g-3">
+        <div class="col-md-4 offset-md-4">
+            <label for="cep" class="form-label">Digite o CEP:</label>
+            <input type="text" id="cep" name="cep" class="form-control" required>
+        </div>
+        <div class="col-md-4 offset-md-4 text-center">
+            <button type="submit" class="btn btn-primary mt-3">Buscar</button>
+        </div>
+    </form>
+
+    <div id="result" class="mt-5"></div>
+    
+    <div class="text-center mt-4">
+        <a href="index.html" class="btn btn-secondary">Voltar para o Início</a>
+    </div>
+
+    <script>
+        document.getElementById('cepForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita o reload da página
+
+            const cep = document.getElementById('cep').value;
+            const url = `https://brasilapi.com.br/api/cep/v1/${cep}`;
+
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('CEP não encontrado');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const resultDiv = document.getElementById('result');
+                    const googleMapsLink = `https://www.google.com.br/maps/search/${data.cep}`;
+
+                    resultDiv.innerHTML = `
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Resultado:</h5>
+                                <p><strong>CEP:</strong> ${data.cep}</p>
+                                <p><strong>Rua:</strong> ${data.street}</p>
+                                <p><strong>Bairro:</strong> ${data.neighborhood}</p>
+                                <p><strong>Cidade:</strong> ${data.city}</p>
+                                <p><strong>Estado:</strong> ${data.state}</p>
+                                <p><a href="${googleMapsLink}" target="_blank" class="btn btn-success">Ver no Google Maps</a></p>
+                            </div>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    document.getElementById('result').innerHTML = `<div class="alert alert-danger">${error.message}</div>`;
+                });
+        });
+    </script>
+
+    <!-- JS do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
