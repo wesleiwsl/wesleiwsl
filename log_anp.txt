@@ -1,0 +1,4 @@
+Timestamp atual: 2024-09
+Arquivo 2024-09_ultimas-4-semanas-diesel-gnv.csv salvo com sucesso.
+Arquivo 2024-09_ultimas-4-semanas-gasolina-etanol.csv salvo com sucesso.
+ok
